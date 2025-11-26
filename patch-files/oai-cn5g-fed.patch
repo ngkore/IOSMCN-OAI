@@ -1,0 +1,34 @@
+diff --git a/docker-compose/conf/basic_nrf_config.yaml b/docker-compose/conf/basic_nrf_config.yaml
+index c55f7c9..acbf4d2 100644
+--- a/docker-compose/conf/basic_nrf_config.yaml
++++ b/docker-compose/conf/basic_nrf_config.yaml
+@@ -222,7 +222,7 @@ upf:
+   support_features:
+     enable_bpf_datapath: no    # If "on": BPF is used as datapath else simpleswitch is used, DEFAULT= off
+     enable_snat: yes           # If "on": Source natting is done for UE, DEFAULT= off
+-  remote_n6_gw: localhost      # Dummy host since simple-switch does not use N6 GW
++  remote_n6_gw: 127.0.0.1      # Dummy host since simple-switch does not use N6 GW
+   smfs:
+     - host: oai-smf            # To be used for PFCP association in case of no-NRF
+   upf_info:
+diff --git a/docker-compose/database/oai_db2.sql b/docker-compose/database/oai_db2.sql
+index 35cb957..f854dc1 100755
+--- a/docker-compose/database/oai_db2.sql
++++ b/docker-compose/database/oai_db2.sql
+@@ -77,6 +77,7 @@ CREATE TABLE `AccessAndMobilitySubscriptionData` (
+ ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+ 
+ INSERT INTO `AccessAndMobilitySubscriptionData` (`ueid`, `servingPlmnid`, `nssai`) VALUES
++('208950000000031', '20895','{\"defaultSingleNssais\": [{\"sst\": 1, \"sd\": \"0xffffff\"}]}'),
+ ('208950000000125', '20895','{\"defaultSingleNssais\": [{\"sst\": 1, \"sd\": \"1\"}]}'),
+ ('208950000000126', '20895','{\"defaultSingleNssais\": [{\"sst\": 1, \"sd\": \"1\"}]}'),
+ ('208950000000127', '20895','{\"defaultSingleNssais\": [{\"sst\": 1, \"sd\": \"1\"}]}'),
+@@ -311,7 +312,7 @@ CREATE TABLE `SessionManagementSubscriptionData` (
+ --
+ 
+ INSERT INTO `SessionManagementSubscriptionData` (`ueid`, `servingPlmnid`, `singleNssai`, `dnnConfigurations`) VALUES 
+-('208950000000031', '20895', '{\"sst\": 222, \"sd\": \"123\"}','{\"default\":{\"pduSessionTypes\":{ \"defaultSessionType\": \"IPV4\"},\"sscModes\": {\"defaultSscMode\": \"SSC_MODE_1\"},\"5gQosProfile\": {\"5qi\": 6,\"arp\":{\"priorityLevel\": 1,\"preemptCap\": \"NOT_PREEMPT\",\"preemptVuln\":\"NOT_PREEMPTABLE\"},\"priorityLevel\":1},\"sessionAmbr\":{\"uplink\":\"100Mbps\", \"downlink\":\"100Mbps\"},\"staticIpAddress\":[{\"ipv4Addr\": \"12.1.1.4\"}]}}');
++('208950000000031', '20895', '{\"sst\": 1, \"sd\": \"0xffffff\"}','{\"oai\":{\"pduSessionTypes\":{ \"defaultSessionType\": \"IPV4\"},\"sscModes\": {\"defaultSscMode\": \"SSC_MODE_1\"},\"5gQosProfile\": {\"5qi\": 6,\"arp\":{\"priorityLevel\": 1,\"preemptCap\": \"NOT_PREEMPT\",\"preemptVuln\":\"NOT_PREEMPTABLE\"},\"priorityLevel\":1},\"sessionAmbr\":{\"uplink\":\"100Mbps\", \"downlink\":\"100Mbps\"},\"staticIpAddress\":[{\"ipv4Addr\": \"12.1.1.4\"}]}}');
+ INSERT INTO `SessionManagementSubscriptionData` (`ueid`, `servingPlmnid`, `singleNssai`, `dnnConfigurations`) VALUES 
+ ('208950000000032', '20895', '{\"sst\": 222, \"sd\": \"123\"}','{\"default\":{\"pduSessionTypes\":{ \"defaultSessionType\": \"IPV4\"},\"sscModes\": {\"defaultSscMode\": \"SSC_MODE_1\"},\"5gQosProfile\": {\"5qi\": 6,\"arp\":{\"priorityLevel\": 1,\"preemptCap\": \"NOT_PREEMPT\",\"preemptVuln\":\"NOT_PREEMPTABLE\"},\"priorityLevel\":1},\"sessionAmbr\":{\"uplink\":\"100Mbps\", \"downlink\":\"100Mbps\"}}}');
+ -- --------------------------------------------------------

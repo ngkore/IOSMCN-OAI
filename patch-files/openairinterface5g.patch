@@ -1,0 +1,34 @@
+diff --git a/targets/PROJECTS/GENERIC-NR-5GC/CONF/gnb.sa.band78.fr1.106PRB.usrpb210.conf b/targets/PROJECTS/GENERIC-NR-5GC/CONF/gnb.sa.band78.fr1.106PRB.usrpb210.conf
+index 7f750d7259..4ae4fddca3 100644
+--- a/targets/PROJECTS/GENERIC-NR-5GC/CONF/gnb.sa.band78.fr1.106PRB.usrpb210.conf
++++ b/targets/PROJECTS/GENERIC-NR-5GC/CONF/gnb.sa.band78.fr1.106PRB.usrpb210.conf
+@@ -10,8 +10,8 @@ gNBs =
+     gNB_name  =  "gNB-OAI";
+ 
+     // Tracking area code, 0x0000 and 0xfffe are reserved values
+-    tracking_area_code  =  1;
+-    plmn_list = ({ mcc = 001; mnc = 01; mnc_length = 2; snssaiList = ({ sst = 1; }) });
++    tracking_area_code  =  0xa000;
++    plmn_list = ({ mcc = 208; mnc = 95; mnc_length = 2; snssaiList = ({ sst = 1; sd = 0xffffff; }) });
+ 
+     nr_cellid = 12345678L;
+ 
+diff --git a/targets/PROJECTS/GENERIC-NR-5GC/CONF/ue.conf b/targets/PROJECTS/GENERIC-NR-5GC/CONF/ue.conf
+index 4cea93ea46..a6e099c89f 100644
+--- a/targets/PROJECTS/GENERIC-NR-5GC/CONF/ue.conf
++++ b/targets/PROJECTS/GENERIC-NR-5GC/CONF/ue.conf
+@@ -1,10 +1,10 @@
+ uicc0 = {
+-imsi = "2089900007487";
+-key = "fec86ba6eb707ed08905757b1bb44b8f";
+-opc= "C42449363BBAD02B66D16BC975D77CC1";
++imsi = "208950000000031";
++key = "0C0A34601D4F07677303652C0462535B";
++opc= "63bfa50ee6523365ff14c1f45f88737d";
+ dnn= "oai";
+ nssai_sst=1;
+-nssai_sd=1;
++nssai_sd=0xffffff;
+ }
+ 
+ position0 = {
