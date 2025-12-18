@@ -1,5 +1,10 @@
 # IOS-MCN OAI Deployment Repository
 
+## E2E Architecture
+
+<img width="1000" height="930" alt="image" src="https://github.com/user-attachments/assets/79834302-4c5a-48bf-8a89-33aee36c1107" />
+
+
 This repository contains deployment guides and configuration files for setting up Open Air Interface (OAI) 5G components integrated with IOS-MCN management and orchestration stack.
 
 ## Quick Navigation
